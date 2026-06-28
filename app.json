@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "FitForge AI",
+    "slug": "fitforge-ai",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "fitforge",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#0A0A0F",
+      "resizeMode": "contain"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "ai.fitforge.app"
+    },
+    "android": {
+      "package": "ai.fitforge.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#0A0A0F"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
