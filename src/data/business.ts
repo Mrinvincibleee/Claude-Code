@@ -25,11 +25,16 @@ export const business = {
   rating: {
     value: 4.7,
     count: 11,
-    /** TODO(client): confirm this is the canonical Google Maps listing URL. */
+    /** TODO(client): swap for the canonical share link of the Google listing. */
     googleMapsUrl:
-      "https://www.google.com/maps/search/?api=1&query=Chaye%2025%20Hai&query_place_id=",
+      "https://www.google.com/maps/search/?api=1&query=Chaye+25+Hai+Shamim+Skyline+Federal+B+Area+Karachi",
   },
   timezone: "Asia/Karachi",
+  /**
+   * TODO(client): replace with the purchased domain (chaye25hai.com / .pk).
+   * Used for canonical URL, sitemap and Open Graph.
+   */
+  siteUrl: "https://chaye25hai.com",
 } as const;
 
 export const whatsAppDefaultMessage =
