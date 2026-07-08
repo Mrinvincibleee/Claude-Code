@@ -7,7 +7,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-8 sm:grid-cols-3">
         <div>
           <p className="flex items-baseline gap-2 font-display text-lg font-bold">
-            <span lang="ur" dir="rtl" className="text-chai">
+            <span lang="ur" dir="rtl" className="urdu-lockup text-chai">
               {business.nameUrdu}
             </span>
             {business.name}

@@ -14,12 +14,27 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
         <a
           href="#hero"
-          className="flex items-baseline gap-2.5 font-display text-lg font-bold tracking-tight"
+          className="flex shrink-0 items-center gap-2.5 font-display text-lg font-bold tracking-tight"
         >
-          <span lang="ur" dir="rtl" className="text-xl leading-none text-chai">
+          {/* Full lockup needs ~120px — small screens get the ۲۵ roundel */}
+          <span
+            lang="ur"
+            dir="rtl"
+            className="urdu-lockup hidden whitespace-nowrap text-base text-chai min-[420px]:inline"
+          >
             {business.nameUrdu}
           </span>
-          <span className="hidden sm:inline">{business.name}</span>
+          <span
+            lang="ur"
+            aria-hidden="true"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-chai/50 pb-1 text-sm leading-none text-chai min-[420px]:hidden"
+          >
+            ۲۵
+          </span>
+          <span className="sr-only">{business.name}</span>
+          <span aria-hidden="true" className="hidden md:inline">
+            {business.name}
+          </span>
         </a>
 
         <nav aria-label="Main" className="flex items-center gap-1 sm:gap-2">

@@ -14,6 +14,7 @@
   --font-display: var(--font-bricolage), ui-sans-serif, sans-serif;
   --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
   --font-urdu: var(--font-nastaliq), serif;
+  --font-urdu-lockup: var(--font-nastaliq-lockup), var(--font-nastaliq), serif;
 }
 
 html {
@@ -42,7 +43,13 @@ body {
 /* Urdu (Nastaliq) needs generous line-height to avoid clipped kerns */
 [lang="ur"] {
   font-family: var(--font-urdu);
+  font-weight: 400; /* the self-hosted subsets carry only 400 */
   line-height: 2.1;
+}
+
+/* Brand lockup "چائے ۲۵ ہے" — tiny preloaded subset, safe above the fold */
+.urdu-lockup {
+  font-family: var(--font-urdu-lockup);
 }
 
 .skip-link {
@@ -58,6 +65,33 @@ body {
 }
 .skip-link:focus {
   top: 1rem;
+}
+
+/* Hero load choreography: lockup → strapline → CTAs, all under 1.2s.
+   CSS-only so it starts on first paint, before any JS arrives. */
+@keyframes hero-fade-up {
+  from {
+    /* 0.01, not 0: fully transparent first paints are excluded from LCP,
+       which would make a tiny header span the page's LCP element */
+    opacity: 0.01;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-enter,
+.hero-enter-delayed,
+.hero-enter-late {
+  animation: hero-fade-up 0.5s ease-out both;
+}
+.hero-enter-delayed {
+  animation-delay: 0.35s;
+}
+.hero-enter-late {
+  animation-delay: 0.6s;
 }
 
 /* Hero steam wisps — pure CSS so the hero ships zero extra JS for it */
@@ -124,6 +158,11 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .hero-enter,
+  .hero-enter-delayed,
+  .hero-enter-late {
+    animation: none;
   }
   .steam-wisp {
     animation: none;
