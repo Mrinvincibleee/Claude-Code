@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#171009"/>
+  <!-- chai glass -->
+  <path d="M22 28h20l-2.5 22a4 4 0 0 1-4 3.5h-7a4 4 0 0 1-4-3.5L22 28Z" fill="#D29A4A"/>
+  <path d="M41 32h4a5 5 0 0 1 0 10h-4.8" fill="none" stroke="#D29A4A" stroke-width="3"/>
+  <!-- steam -->
+  <g fill="none" stroke="#F4EADB" stroke-width="2.6" stroke-linecap="round" opacity="0.85">
+    <path d="M27 22c-1.5-3 1.5-4.5 0-7.5"/>
+    <path d="M33 23c-1.5-3.5 1.5-5 0-8.5"/>
+    <path d="M39 22c-1.5-3 1.5-4.5 0-7.5"/>
+  </g>
+</svg>

@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@theme {
+  /* "Karachi at 2 AM" palette */
+  --color-bg: #171009; /* midnight dhaba */
+  --color-surface: #231810; /* card/section surface */
+  --color-cream: #f4eadb; /* steam white */
+  --color-chai: #d29a4a; /* doodh patti caramel — primary accent */
+  --color-steel: #9aa3a8; /* chai-kettle steel — secondary text */
+  --color-rani: #e84a7f; /* truck-art rani pink — open badge + float pulse ONLY */
+}
+
+@theme inline {
+  --font-display: var(--font-bricolage), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-urdu: var(--font-nastaliq), serif;
+  --font-urdu-lockup: var(--font-nastaliq-lockup), var(--font-nastaliq), serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-chai);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--color-chai);
+  color: var(--color-bg);
+}
+
+/* Urdu (Nastaliq) needs generous line-height to avoid clipped kerns */
+[lang="ur"] {
+  font-family: var(--font-urdu);
+  font-weight: 400; /* the self-hosted subsets carry only 400 */
+  line-height: 2.1;
+}
+
+/* Brand lockup "چائے ۲۵ ہے" — tiny preloaded subset, safe above the fold */
+.urdu-lockup {
+  font-family: var(--font-urdu-lockup);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100%;
+  z-index: 100;
+  background: var(--color-chai);
+  color: var(--color-bg);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Hero load choreography: lockup → strapline → CTAs, all under 1.2s.
+   CSS-only so it starts on first paint, before any JS arrives. */
+@keyframes hero-fade-up {
+  from {
+    /* 0.01, not 0: fully transparent first paints are excluded from LCP,
+       which would make a tiny header span the page's LCP element */
+    opacity: 0.01;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-enter,
+.hero-enter-delayed,
+.hero-enter-late {
+  animation: hero-fade-up 0.5s ease-out both;
+}
+.hero-enter-delayed {
+  animation-delay: 0.35s;
+}
+.hero-enter-late {
+  animation-delay: 0.6s;
+}
+
+/* Hero steam wisps — pure CSS so the hero ships zero extra JS for it */
+@keyframes steam-drift {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.55;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-46px) translateX(8px) scale(1.15);
+    opacity: 0;
+  }
+}
+
+.steam-wisp {
+  animation: steam-drift 4.5s ease-out infinite;
+  will-change: transform, opacity;
+}
+.steam-wisp:nth-child(2) {
+  animation-delay: 1.4s;
+  animation-duration: 5.2s;
+}
+.steam-wisp:nth-child(3) {
+  animation-delay: 2.7s;
+  animation-duration: 4.1s;
+}
+
+/* Floating WhatsApp button pulse — the only other place rani appears */
+@keyframes rani-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(232 74 127 / 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgb(232 74 127 / 0);
+  }
+}
+.whatsapp-pulse {
+  animation: rani-pulse 2.4s ease-in-out infinite;
+}
+
+/* Warm low-light treatment so mixed-quality client photos look cohesive */
+.warm-photo {
+  position: relative;
+}
+.warm-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgb(210 154 74 / 0.08),
+    rgb(23 16 9 / 0.35)
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-enter,
+  .hero-enter-delayed,
+  .hero-enter-late {
+    animation: none;
+  }
+  .steam-wisp {
+    animation: none;
+    opacity: 0.35;
+    filter: blur(6px);
+  }
+  .whatsapp-pulse {
+    animation: none;
+  }
+}
