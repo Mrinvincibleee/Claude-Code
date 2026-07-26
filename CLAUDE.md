@@ -50,6 +50,14 @@ Copy `.env.example` → `.env` (optional — app runs without it). Anything pref
 - `app.json` sets `experiments.baseUrl: "/Claude-Code"` so the SPA works under the Pages subpath, and `web.output: "single"` (the workflow copies `index.html` → `404.html` as the SPA fallback).
 - **The repo root also contains a committed web build** (`index.html`, `404.html`, `_expo/`, `assets/`, `metadata.json`, `.nojekyll`) published to the branch root for Pages. These are build artifacts, not source — never hand-edit them; regenerate via `npx expo export --platform web` if they need updating. In particular, root `assets/` is bundler output, not the app's source assets.
 
+## Marketing website (`website/`)
+
+A standalone full-stack site, separate from the Expo app: an Express backend (`server.js`) serving the frontend from `website/public/` and a JSON API (`/api/stats`, `/api/newsletter`, `/api/contact`) persisted to flat files in the gitignored `website/data/`. The frontend uses Three.js (three 3D scenes), GSAP ScrollTrigger (scroll animations, pinned horizontal section) and Lenis (smooth scroll) — all vendored from `node_modules` via `/vendor/*` routes, no CDN. Run with:
+
+```bash
+cd website && npm install && npm start   # http://localhost:3000
+```
+
 ## Conventions
 
 - TypeScript strict mode; use the `@/` import alias for everything under `src/`.

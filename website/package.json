@@ -1,0 +1,17 @@
+{
+  "name": "fitforge-ai-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FitForge AI marketing website — Express backend + Three.js/GSAP/Lenis frontend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "gsap": "^3.12.7",
+    "lenis": "^1.1.20",
+    "three": "^0.172.0"
+  }
+}

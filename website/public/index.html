@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FitForge AI — Forge Your Strongest Self</title>
+  <meta name="description" content="AI-powered workouts, nutrition and coaching wrapped in a premium experience." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script type="importmap">
+    { "imports": { "three": "/vendor/three/build/three.module.js" } }
+  </script>
+</head>
+<body>
+
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-logo">⚡</div>
+    <div class="preloader-bar"><span></span></div>
+  </div>
+
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <header class="nav" id="nav">
+    <a class="nav-logo" href="#hero" data-scroll-to>⚡ FitForge <span>AI</span></a>
+    <nav class="nav-links">
+      <a href="#features" data-scroll-to>Features</a>
+      <a href="#stats" data-scroll-to>Numbers</a>
+      <a href="#coach" data-scroll-to>AI Coach</a>
+      <a href="#cta" data-scroll-to>Join</a>
+    </nav>
+    <a class="nav-cta" href="#cta" data-scroll-to>Get the app</a>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO — 3D scene #1 ============ -->
+    <section class="hero" id="hero">
+      <canvas class="scene-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="hero-kicker" data-reveal>AI-POWERED FITNESS</p>
+        <h1 class="hero-title" id="hero-title">Forge your<br /><em>strongest</em> self</h1>
+        <p class="hero-sub" data-reveal>
+          Personalized workouts, adaptive nutrition and a coach that never sleeps —
+          wrapped in an experience that makes you want to show up.
+        </p>
+        <div class="hero-actions" data-reveal>
+          <a class="btn btn-primary" href="#cta" data-scroll-to>Start free</a>
+          <a class="btn btn-ghost" href="#features" data-scroll-to>See how it works</a>
+        </div>
+      </div>
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span class="hint-line"></span> scroll
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" id="marquee-track">
+        <span>AI COACHING</span><i>◆</i><span>SMART PROGRAMS</span><i>◆</i>
+        <span>NUTRITION</span><i>◆</i><span>PROGRESS TRACKING</span><i>◆</i>
+        <span>REST TIMER</span><i>◆</i><span>STREAKS &amp; XP</span><i>◆</i>
+        <span>AI COACHING</span><i>◆</i><span>SMART PROGRAMS</span><i>◆</i>
+        <span>NUTRITION</span><i>◆</i><span>PROGRESS TRACKING</span><i>◆</i>
+        <span>REST TIMER</span><i>◆</i><span>STREAKS &amp; XP</span><i>◆</i>
+      </div>
+    </div>
+
+    <!-- ============ FEATURES — pinned horizontal scroll + 3D scene #2 ============ -->
+    <section class="features" id="features">
+      <canvas class="scene-canvas" id="features-canvas" aria-hidden="true"></canvas>
+      <div class="features-inner">
+        <div class="features-head">
+          <p class="section-kicker" data-reveal>WHAT'S INSIDE</p>
+          <h2 class="section-title" data-reveal>Built to keep you moving</h2>
+        </div>
+        <div class="features-track" id="features-track">
+          <article class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>Adaptive AI programs</h3>
+            <p>Your plan rewrites itself around your recovery, schedule and progress. Miss a day? It adapts, not punishes.</p>
+            <span class="feature-num">01</span>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">⏱</div>
+            <h3>Smart rest timer</h3>
+            <p>A circular timer with haptics that knows your target rest per lift — so intensity never leaks between sets.</p>
+            <span class="feature-num">02</span>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">🥗</div>
+            <h3>Nutrition that fits</h3>
+            <p>Macro targets, water tracking and AI meal recognition tuned to your goal — cut, recomp or grow.</p>
+            <span class="feature-num">03</span>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">📈</div>
+            <h3>Progress you can see</h3>
+            <p>Animated volume charts, measurements and a photo timeline that proves the work is working.</p>
+            <span class="feature-num">04</span>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">🔥</div>
+            <h3>Streaks &amp; XP</h3>
+            <p>Levels, achievements and daily habits that turn consistency into a game you actually want to win.</p>
+            <span class="feature-num">05</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STATS — live from the backend ============ -->
+    <section class="stats" id="stats">
+      <div class="stats-inner">
+        <p class="section-kicker" data-reveal>THE NUMBERS</p>
+        <h2 class="section-title" data-reveal>A community that shows up</h2>
+        <div class="stats-grid">
+          <div class="stat-card" data-reveal>
+            <span class="stat-value" data-stat="members">0</span>
+            <span class="stat-label">Members forging on</span>
+          </div>
+          <div class="stat-card" data-reveal>
+            <span class="stat-value" data-stat="workoutsLogged">0</span>
+            <span class="stat-label">Workouts logged</span>
+          </div>
+          <div class="stat-card" data-reveal>
+            <span class="stat-value" data-stat="caloriesBurned">0</span>
+            <span class="stat-label">Calories burned</span>
+          </div>
+          <div class="stat-card" data-reveal>
+            <span class="stat-value" data-stat="aiSessions">0</span>
+            <span class="stat-label">AI coaching sessions</span>
+          </div>
+        </div>
+        <p class="stats-note" data-reveal>Live from <code>/api/stats</code> — this page has a pulse.</p>
+      </div>
+    </section>
+
+    <!-- ============ AI COACH ============ -->
+    <section class="coach" id="coach">
+      <div class="coach-inner">
+        <div class="coach-copy">
+          <p class="section-kicker" data-reveal>AI COACH</p>
+          <h2 class="section-title" data-reveal>Ask anything.<br />Get a plan.</h2>
+          <p class="coach-sub" data-reveal>
+            Powered by Claude, your coach knows your goal, your equipment and your
+            history — and answers like a coach, not a search engine.
+          </p>
+        </div>
+        <div class="chat-mock" data-reveal>
+          <div class="chat-header"><span class="chat-dot"></span> FitForge Coach</div>
+          <div class="chat-body">
+            <div class="chat-msg user" data-chat>My shoulder aches on bench — what do I do today?</div>
+            <div class="chat-msg ai" data-chat>Let's protect it. Swap flat bench for a neutral-grip floor press, drop to RPE 7, and add band pull-aparts between sets. I've updated today's push session. 💪</div>
+            <div class="chat-msg user" data-chat>And if it still hurts?</div>
+            <div class="chat-msg ai" data-chat>Then we stop pressing and train around it — pain is data, not a challenge. I'll flag it in your log so we can watch the trend.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA — 3D scene #3 + newsletter (backend) ============ -->
+    <section class="cta" id="cta">
+      <canvas class="scene-canvas" id="cta-canvas" aria-hidden="true"></canvas>
+      <div class="cta-inner">
+        <h2 class="cta-title" data-reveal>Ready to forge?</h2>
+        <p class="cta-sub" data-reveal>Join the waitlist and be first in when the doors open.</p>
+        <form class="newsletter" id="newsletter-form" data-reveal novalidate>
+          <input type="email" name="email" id="newsletter-email" placeholder="you@example.com" required autocomplete="email" />
+          <button class="btn btn-primary" type="submit">Join the waitlist</button>
+        </form>
+        <p class="newsletter-status" id="newsletter-status" role="status"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>⚡ FitForge AI</span>
+    <span class="footer-dim">Forged with sweat &amp; silicon · © 2026</span>
+  </footer>
+
+  <script src="/vendor/gsap/dist/gsap.min.js"></script>
+  <script src="/vendor/gsap/dist/ScrollTrigger.min.js"></script>
+  <script src="/vendor/lenis/dist/lenis.min.js"></script>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
